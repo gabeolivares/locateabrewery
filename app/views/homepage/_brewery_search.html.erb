@@ -1,0 +1,48 @@
+<!-- brewery_list-->
+</br>
+<section class="page-section portfolio" id="brewery_list">
+  <div class="container">
+    <!-- brewery_list Section Heading-->
+    <div class="text-center">
+      </br>
+      <h2 class="page-section-heading text-secondary mb-0 d-inline-block">Results for:</h2>
+      </br>
+      </br>
+      <h6 class="mb-0 d-inline-block"><%= @query %></h6>
+    </div>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-search"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+
+
+    <% @response.each do |brewery| %>
+      <div class="card custom-card">
+        <div class="image-container">
+          <%= image_tag brewery['image_url'], class: "card-img-top"  %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= brewery['name'] %></h5>
+          <p class="card-text">
+            <%= link_to brewery['location'], "https://maps.google.com/?q=#{brewery['location']}", target: "_blank" %>
+            </br>
+            <%= link_to brewery['display_phone'], "tel:#{brewery['display_phone']}" %>
+            </br>
+            Rating: <%= brewery['rating'] %> <i> <%= brewery['review_count'] %> reviews</i>
+            </br>
+            Price: <%= brewery['price'] %>
+            </br>
+            Currently Open: <%= brewery['is_closed'] ? 'No' : 'Yes' %>
+            </br>
+            Miles Away: <%= brewery['distance'] %> miles
+          </p>
+          <%= link_to "Visit Yelp Page", brewery['url'], target: "_blank", class: "btn btn-primary btn-yelp" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  </div>
+</section>
+
