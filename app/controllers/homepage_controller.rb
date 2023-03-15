@@ -5,10 +5,11 @@ class HomepageController < ApplicationController
     token = "Bearer " + ENV['yelp_key']
     @query = valid_params["query"]
     sort_by = valid_params["sort_by"]
+    headers = { "Content-Type": "application/json",
+            "Authorization": token,
+            "Same-Site": "None; Secure" }
     brewery_data = HTTParty.get("https://api.yelp.com/v3/businesses/search?&term=breweries&location=#{@query}&limit=50&sort_by=#{sort_by}",
-                             headers: { "Content-Type": "application/json",
-                                        "Authorization": token
-                             }).body
+                             headers: headers).body
     @response = adapt_brewery_data(JSON.parse(brewery_data))
 
     respond_to do |format|
