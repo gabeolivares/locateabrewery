@@ -2,7 +2,7 @@ class HomepageController < ApplicationController
 
   def brewery_search
     valid_params
-    token = "Bearer " + 'qpdQVS6vAQ129LIIsJgDNZ0GqZXFYHx0HMk6GJnL1SsjxsmYdlZQ3sKutsPqsZC-zpvJJxp6FOl1eJilpTjjYoWQ5KWIztgCVH4OCmsHglw8zvmiPL3-8nMBnr3cYXYx'
+    token = "Bearer " + ENV['yelp_key']
     @query = valid_params["query"]
     sort_by = valid_params["sort_by"]
     headers = { "Content-Type": "application/json",
