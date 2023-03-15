@@ -11,6 +11,7 @@ gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'webrick', '~> 1.7'
 gem 'psych', '< 4'
+gem 'rack-cors'
 
 gem 'sass-rails', '>= 4.0.0'
 gem 'coffee-rails', '>= 4.0.0'
